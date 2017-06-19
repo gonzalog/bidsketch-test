@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bidsketch Whack-a-Mole</title>
+    <%= webpack_common_tag %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div id="root" data-initial-state="<%= @initial_state.to_s %>"></div>
+    <%= webpack_bundle_tag @package %>
+  </body>
+</html>
