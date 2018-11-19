@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Navbar, Button, Glyphicon } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import { FaAngleLeft } from 'react-icons/fa'
-import { lightBlue } from 'document_editor/components/colors';
+import { lightBlue, white } from 'document_editor/components/colors';
 
 const arrowStyle = {
   marginTop: 'auto',
@@ -10,13 +10,16 @@ const arrowStyle = {
   color: lightBlue
 };
 
+const barStyle = {
+  backgroundColor: white,
+  marginBottom: 0
+};
+
 const Bar = () => (
-  <Navbar>
-    <Navbar.Header>
-        <h1>
-          <FaAngleLeft style={arrowStyle} />
-        </h1>
-    </Navbar.Header>
+  <Navbar style={barStyle}>
+    <h1>
+      <FaAngleLeft style={arrowStyle} />
+    </h1>
   </Navbar>
 );
 
