@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181106155014) do
+ActiveRecord::Schema.define(version: 20181121010446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,11 +23,18 @@ ActiveRecord::Schema.define(version: 20181106155014) do
   create_table "options", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "page_id"
+    t.boolean "value", default: false
+    t.index ["page_id"], name: "index_options_on_page_id"
   end
 
   create_table "pages", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "document_id"
+    t.index ["document_id"], name: "index_pages_on_document_id"
   end
 
+  add_foreign_key "options", "pages"
+  add_foreign_key "pages", "documents"
 end

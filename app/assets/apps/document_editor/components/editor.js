@@ -1,58 +1,21 @@
 import React from 'react';
 import { Bar } from 'document_editor/components/navbar';
-import { Grid, Row, Col } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
-import { grey, lightBlue } from 'document_editor/components/colors'
+import { Header } from 'document_editor/components/header';
+import { Document } from 'document_editor/components/document';
+import { Document as DocumentType } from 'document_editor/types/document';
 
-const gridStyle = {
-  width: '100%',
-  borderColor: grey,
-  borderBottomWidth: '1px',
-  borderBottomStyle: 'solid',
-  paddingTop: '10px',
-  paddingBottom: '10px'
+const Editor = ({ doc }) => { 
+  return (
+    <div>
+      <Bar />
+      <Header />
+      <Document doc={doc} />
+    </div>
+  );
+}
+
+Editor.propTypes = {
+  doc: DocumentType.isRequired
 };
-
-const buttonStyle = {
-  borderRadius: '23px',
-  width: '100%',
-  backgroundColor: lightBlue,
-  border: 'none'
-};
-
-const buttonColStyle = {
-  textAlign: 'center'
-};
-
-const rowStyle = {
-  display: 'flex'
-};
-
-const messageStyle = {
-  margin: 'auto',
-  fontSize: '18px'
-};
-
-const Editor = () => (
-  <div>
-    <Bar/>
-    <Grid style={gridStyle}>
-      <Row style={rowStyle}>
-        <Col sm={5} style={messageStyle}>
-          Review & Complete document
-        </Col>
-        <Col sm={2} style={buttonColStyle}>
-          <Button bsStyle="primary" bsSize="large" style={buttonStyle}>
-            Click to START
-          </Button>
-        </Col>
-        <Col sm={5}>
-        </Col>
-      </Row>
-    </Grid>
-  </div>
-);
-
-Editor.propTypes = {};
 
 export { Editor };
