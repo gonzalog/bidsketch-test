@@ -1,10 +1,21 @@
 import { createSelector } from 'reselect';
-import { totalOptionsSelector } from 'document_editor/selectors/total_options';
+import { totalOptionsSelector, totalOptionsCountSelector } from 'document_editor/selectors/total_options';
 import { completedOptionsSelector } from 'document_editor/selectors/completed_options';
+import { countSelector } from 'document_editor/selectors/count';
 
 const totalCompletedOptionsSelector = createSelector(
   totalOptionsSelector,
-  completed_options
+  completedOptionsSelector
 )
 
-export { totalCompletedOptionsSelector }
+const totalCompletedOptionsCountSelector = createSelector(
+  totalCompletedOptionsSelector,
+  countSelector
+)
+
+export {
+  totalCompletedOptionsSelector,
+  totalCompletedOptionsCountSelector,
+  totalOptionsSelector,
+  totalOptionsCountSelector
+}
