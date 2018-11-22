@@ -1,35 +1,48 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Page as PageType } from 'document_editor/types/page';
 import { Panel, Badge } from  'react-bootstrap';
 import { pageOptionsCountSelector } from 'document_editor/selectors/page_options';
 import { pageCompletedOptionsCountSelector } from 'document_editor/selectors/page_completed_options';
-import { darkGrey, badgeGrey } from 'document_editor/components/colors';
+import { darkGrey, badgeGrey, selected, white } from 'document_editor/components/colors';
 
-const thumbnailStyle = {
-  marginBottom: '30px',
-  borderRadius: 0
-};
 
-const bodyStyle = {
-  height: '200px',
-  textAlign: 'center',
-  display: 'flex',
-  alignItems: 'center'
-}
+const PageThumbnail = ({ page, onClick, isCurrent }) => {
+  let backgroundColor;
+  if (isCurrent) {
+    backgroundColor = selected;
+    color = white;
+  } else {
+    backgroundColor = badgeGrey;
+    color = darkGrey;
+  }
 
-const labelStyle = {
-  backgroundColor: badgeGrey,
-  color: darkGrey,
-  padding: '1.5rem',
-  borderRadius: '2rem',
-  margin: 'auto'
-}
+  let label = `${pageCompletedOptionsCountSelector(page)} of ${pageOptionsCountSelector(page)}`;
 
-const PageThumbnail = ({ page }) => {
-  const label = `${pageCompletedOptionsCountSelector(page)} of ${pageOptionsCountSelector(page)}`;
+  let thumbnailStyle = {
+    marginBottom: '30px',
+    borderRadius: 0,
+    borderColor: backgroundColor,
+    cursor: 'pointer'
+  };
+
+  let bodyStyle = {
+    height: '200px',
+    textAlign: 'center',
+    display: 'flex',
+    alignItems: 'center'
+  }
+
+  let labelStyle = {
+    backgroundColor: backgroundColor,
+    color,
+    padding: '1.5rem',
+    borderRadius: '2rem',
+    margin: 'auto'
+  }
 
   return (
-    <Panel style={thumbnailStyle}>
+    <Panel style={thumbnailStyle} onClick={onClick}>
       <Panel.Body style={bodyStyle}>
         <Badge style={labelStyle}>
           { label }
@@ -40,7 +53,9 @@ const PageThumbnail = ({ page }) => {
 }
 
 PageThumbnail.propTypes = {
-  page: PageType.isRequired
+  page: PageType.isRequired,
+  onClick: PropTypes.func,
+  isCurrent: PropTypes.bool.isRequired
 };
 
 export { PageThumbnail };

@@ -4,6 +4,7 @@ const grey = '#e2e2e2';
 const lightGrey = '#f7f7f7';
 const darkGrey = '#c7c7c7';
 const badgeGrey = '#f5f5f5';
+const selected = '#92c9d4';
 
 export {
   lightBlue,
@@ -11,5 +12,6 @@ export {
   grey,
   lightGrey,
   darkGrey,
-  badgeGrey
+  badgeGrey,
+  selected
 }

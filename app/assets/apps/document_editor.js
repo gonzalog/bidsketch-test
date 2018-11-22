@@ -6,7 +6,13 @@ import { createStore } from 'redux'
 import editorApp from 'document_editor/reducers/editorApp'
 
 let rootElement = document.getElementById('root')
-const store = createStore(editorApp, JSON.parse(rootElement.dataset.initialState))
+let initialState = JSON.parse(rootElement.dataset.initialState);
+
+if (initialState.document.pages.length) {
+  initialState.currentPage = initialState.document.pages[0];
+}
+
+const store = createStore(editorApp, initialState)
 
 render(
   <Provider store={store}>
