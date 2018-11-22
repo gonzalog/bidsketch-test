@@ -3,13 +3,8 @@ import PropTypes from 'prop-types';
 import { Document as DocumentType } from 'document_editor/types/document';
 import { Page as PageType } from 'document_editor/types/page';
 import { PageThumbnail as Page } from 'document_editor/components/page_thumbnail';
-import { grey } from 'document_editor/components/colors';
 
 const sideBarStyle = {
-  marginTop: '10px',
-  borderRightColor: grey,
-  borderRightWidth: '1px',
-  borderRightStyle: 'solid',
   padding: '20%'
 }
 
