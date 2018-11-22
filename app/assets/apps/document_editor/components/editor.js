@@ -6,12 +6,12 @@ import { Document } from 'document_editor/components/document';
 import { Document as DocumentType } from 'document_editor/types/document';
 import { Page as PageType } from 'document_editor/types/page';
 
-const Editor = ({ doc, selectPage, currentPage }) => { 
+const Editor = ({ doc, selectPage, currentPage, optionClick }) => { 
   return (
     <div>
       <Bar />
       <Header />
-      <Document doc={doc} selectPage={selectPage} currentPage={currentPage} />
+      <Document doc={doc} selectPage={selectPage} optionClick={optionClick} currentPage={currentPage} />
     </div>
   );
 }
@@ -19,6 +19,7 @@ const Editor = ({ doc, selectPage, currentPage }) => {
 Editor.propTypes = {
   doc: DocumentType.isRequired,
   selectPage: PropTypes.func.isRequired,
+  optionClick: PropTypes.func.isRequired,
   currentPage: PageType.isRequired
 };
 

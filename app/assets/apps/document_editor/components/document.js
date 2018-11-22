@@ -22,14 +22,14 @@ const pageStyle = {
   marginBottom: '6rem'
 }
 
-const Document = ({ doc, selectPage, currentPage }) => (
+const Document = ({ doc, selectPage, currentPage, optionClick }) => (
   <Grid style={gridStyle}>
     <Row>
       <Col lg={2} md={3} sm={4}>
         <SideBar doc={doc} onThumbnailClick={selectPage} currentPage={currentPage} />
       </Col>
       <Col lg={10} md={9} sm={8} style={pageStyle}>
-        <Page page={currentPage} />
+        <Page page={currentPage} onOptionChange={optionClick} />
       </Col>
     </Row>
   </Grid>  
@@ -38,6 +38,7 @@ const Document = ({ doc, selectPage, currentPage }) => (
 Document.propTypes = {
   doc: DocumentType.isRequired,
   selectPage: PropTypes.func.isRequired,
+  optionClick: PropTypes.func.isRequired,
   currentPage: PageType.isRequired
 };
 

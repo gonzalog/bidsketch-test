@@ -8,9 +8,7 @@ import editorApp from 'document_editor/reducers/editorApp'
 let rootElement = document.getElementById('root')
 let initialState = JSON.parse(rootElement.dataset.initialState);
 
-if (initialState.document.pages.length) {
-  initialState.currentPage = initialState.document.pages[0];
-}
+initialState.currentPage = 0;
 
 const store = createStore(editorApp, initialState)
 

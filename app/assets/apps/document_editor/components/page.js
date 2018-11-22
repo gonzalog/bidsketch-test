@@ -5,7 +5,7 @@ import { Panel, Checkbox } from  'react-bootstrap';
 import { darkGrey, badgeGrey, selected, white } from 'document_editor/components/colors';
 
 
-const Page = ({ page }) => {
+const Page = ({ page, onOptionChange }) => {
   let pageStyle = {
     borderRadius: 0,
     borderColor: badgeGrey,
@@ -33,7 +33,14 @@ const Page = ({ page }) => {
         <div style={bodyContentStyle}>
           {
             page.options.map((option) => {
-              return <Checkbox key={option.id} style={optionStyle}/>;
+              let onChange = () => onOptionChange(option)
+
+              return <Checkbox
+                  key={option.id}
+                  style={optionStyle}
+                  checked={option.value}
+                  onChange={onChange}
+                />;
             })
           }
         </div>
@@ -43,7 +50,8 @@ const Page = ({ page }) => {
 }
 
 Page.propTypes = {
-  page: PageType.isRequired
+  page: PageType.isRequired,
+  onOptionChange: PropTypes.func
 };
 
 export { Page };
