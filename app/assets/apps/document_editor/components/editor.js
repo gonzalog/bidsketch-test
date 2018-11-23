@@ -8,12 +8,19 @@ import { Page as PageType } from 'document_editor/types/page';
 import { totalOptionsCountSelector, totalCompletedOptionsCountSelector } from 'document_editor/selectors/total_completed_options';
 import { ProgressBar } from 'document_editor/components/progress_bar';
 
-const Editor = ({ doc, selectPage, currentPage, optionClick, startGuidedMode, guidedMode }) => { 
+const Editor = ({ doc, selectPage, currentPage, optionClick, startGuidedMode, guidedMode, closeDocument }) => { 
+  let completed = totalCompletedOptionsCountSelector(doc);
+  let total = totalOptionsCountSelector(doc);
   return (
     <div>
       <Bar />
-      <Header startGuidedMode={startGuidedMode} guidedMode={guidedMode} />
-      <ProgressBar total={ totalOptionsCountSelector(doc) } completed={ totalCompletedOptionsCountSelector(doc) } />
+      <Header
+        startGuidedMode={startGuidedMode}
+        guidedMode={guidedMode}
+        completed={ completed === total }
+        closeDocument={ () => closeDocument(doc) }
+        closed={ !!doc.closed_at } />
+      <ProgressBar total={ total } completed={ completed } />
       <Document doc={doc} selectPage={selectPage} optionClick={optionClick} currentPage={currentPage} guidedMode={guidedMode} />
     </div>
   );
@@ -25,7 +32,8 @@ Editor.propTypes = {
   optionClick: PropTypes.func.isRequired,
   currentPage: PageType.isRequired,
   startGuidedMode: PropTypes.func.isRequired,
-  guidedMode: PropTypes.bool
+  guidedMode: PropTypes.bool,
+  closeDocument: PropTypes.func
 };
 
 export { Editor };

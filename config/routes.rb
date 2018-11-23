@@ -3,4 +3,8 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resource :options, only: :update
+
+  resources :document, only: [] do
+    put :close
+  end
 end

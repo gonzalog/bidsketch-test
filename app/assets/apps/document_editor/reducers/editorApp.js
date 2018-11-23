@@ -1,5 +1,12 @@
 import { combineReducers } from 'redux';
-import { SET_CURRENT_PAGE, OPTION_CHANGE_RESPONSE, OPTION_CLICK, SET_GUIDED_MODE } from 'document_editor/actions';
+import {
+  SET_CURRENT_PAGE,
+  OPTION_CHANGE_RESPONSE,
+  OPTION_CLICK,
+  SET_GUIDED_MODE,
+  CLOSE_DOCUMENT_REQUEST,
+  CLOSE_DOCUMENT_RESPONSE
+} from 'document_editor/actions';
 
 let editorApp = function(state = {}, action) {
   switch (action.type) {
@@ -37,6 +44,16 @@ let editorApp = function(state = {}, action) {
       return {
         ...state,
         guidedMode: true
+      }
+    case CLOSE_DOCUMENT_REQUEST:
+      return state;
+    case CLOSE_DOCUMENT_RESPONSE:
+      return {
+        ...state,
+        document: {
+          ...state.document,
+          closed_at: action.response.closed_at
+        }
       }
     default:
       return state

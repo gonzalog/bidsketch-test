@@ -4,7 +4,9 @@ import {
   setCurrentPage,
   optionClick,
   optionChangeResponse,
-  setGuidedMode
+  setGuidedMode,
+  closeDocumentRequest,
+  closeDocumentResponse
 } from 'document_editor/actions';
 import 'whatwg-fetch';
 import { currentPageSelector } from 'document_editor/selectors/current_page';
@@ -43,6 +45,20 @@ const mapDispatchToProps = dispatch => {
     },
     startGuidedMode: () => {
       dispatch(setGuidedMode());
+    },
+    closeDocument: (doc) => {
+      dispatch(closeDocumentRequest(doc));
+      window.fetch(`/document/${doc.id}/close`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        response.json().then(json => {
+          dispatch(closeDocumentResponse(json));
+        });
+      })
     }
   }
 }
