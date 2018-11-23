@@ -65,7 +65,7 @@ const PageThumbnail = ({ page, onClick, isCurrent }) => {
     <Panel style={thumbnailStyle} onClick={onClick}>
       <Panel.Body style={bodyStyle}>
         {
-          badge
+          (total > 0) && badge
         }
       </Panel.Body>
     </Panel>
