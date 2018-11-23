@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTYpes from 'prop-types';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { grey, lightBlue } from 'document_editor/components/colors';
@@ -24,7 +25,8 @@ const buttonColStyle = {
 };
 
 const rowStyle = {
-  display: 'flex'
+  display: 'flex',
+  height: '42px'
 };
 
 const messageStyle = {
@@ -32,16 +34,19 @@ const messageStyle = {
   fontSize: '18px'
 };
 
-const Header = () => (
+const Header = ({ startGuidedMode, guidedMode }) => (
   <Grid style={gridStyle}>
     <Row style={rowStyle}>
       <Col sm={5} style={messageStyle}>
         Review & Complete document
       </Col>
       <Col sm={2} style={buttonColStyle}>
-        <Button bsStyle="primary" bsSize="large" style={buttonStyle}>
-          Click to START
-        </Button>
+        {
+          !guidedMode && 
+          <Button bsStyle="primary" bsSize="large" style={buttonStyle} onClick={startGuidedMode}>
+            Click to START
+          </Button>
+        }
       </Col>
       <Col sm={5}>
       </Col>
@@ -49,7 +54,9 @@ const Header = () => (
   </Grid>
 );
 
-Header.propTypes = {};
+Header.propTypes = {
+  startGuidedMode: PropTYpes.func.isRequired
+};
 
 export { Header };
 

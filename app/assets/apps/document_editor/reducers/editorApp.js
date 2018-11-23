@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { SET_CURRENT_PAGE, OPTION_CHANGE_RESPONSE, OPTION_CLICK } from 'document_editor/actions';
+import { SET_CURRENT_PAGE, OPTION_CHANGE_RESPONSE, OPTION_CLICK, SET_GUIDED_MODE } from 'document_editor/actions';
 
 let editorApp = function(state = {}, action) {
   switch (action.type) {
@@ -32,6 +32,11 @@ let editorApp = function(state = {}, action) {
             }
           })
         }
+      }
+    case SET_GUIDED_MODE:
+      return {
+        ...state,
+        guidedMode: true
       }
     default:
       return state

@@ -3,3 +3,13 @@
     width: 100%;
   }
 }
+
+.tooltip.top.in {
+  .tooltip-inner {
+    background-color: #68b3c2;
+    border-radius: 30rem;
+  }
+  .tooltip-arrow {
+    border-top-color: #68b3c2;
+  }
+}

@@ -11,7 +11,8 @@ const ProgressBar = ({ total, completed }) => {
     width: `${completeness}%`,
     borderColor: lightBlue,
     color: lightBlue,
-    textAlign: 'right'
+    textAlign: 'right',
+    height: '30px'
   };
 
   let containerStyle = {
@@ -25,7 +26,7 @@ const ProgressBar = ({ total, completed }) => {
     <div style={containerStyle}>
       <div style={barStyle}>
         {
-          description
+          !!completed && description
         }
       </div>
     </div>

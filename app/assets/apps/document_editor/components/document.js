@@ -14,7 +14,7 @@ const gridStyle = {
 
 const pageStyle = {
   paddingLeft: '5rem',
-  paddingTop: '7rem',
+  paddingTop: '3rem',
   borderLeftColor: grey,
   borderLeftWidth: '1px',
   borderLeftStyle: 'solid',
@@ -22,14 +22,14 @@ const pageStyle = {
   marginBottom: '6rem'
 }
 
-const Document = ({ doc, selectPage, currentPage, optionClick }) => (
+const Document = ({ doc, selectPage, currentPage, optionClick, guidedMode }) => (
   <Grid style={gridStyle}>
     <Row>
       <Col lg={2} md={3} sm={4}>
         <SideBar doc={doc} onThumbnailClick={selectPage} currentPage={currentPage} />
       </Col>
       <Col lg={10} md={9} sm={8} style={pageStyle}>
-        <Page page={currentPage} onOptionChange={optionClick} />
+        <Page page={currentPage} onOptionChange={optionClick} guidedMode={guidedMode} />
       </Col>
     </Row>
   </Grid>  
@@ -39,7 +39,8 @@ Document.propTypes = {
   doc: DocumentType.isRequired,
   selectPage: PropTypes.func.isRequired,
   optionClick: PropTypes.func.isRequired,
-  currentPage: PageType.isRequired
+  currentPage: PageType.isRequired,
+  guidedMode: PropTypes.bool
 };
 
 export { Document };
