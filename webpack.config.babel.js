@@ -12,7 +12,8 @@ const commonConfig = {
   },
   context: path.resolve('app/assets'),
   entry: {
-    'styles': './stylesheets/application.scss'
+    'styles': './stylesheets/application.scss',
+    'document_editor': './apps/document_editor.js'
   },
   output: {
     path: path.resolve('tmp/assets'),

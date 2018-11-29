@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
   def render_react_app(app_name, initial_state = {})
     @package = app_name
     @initial_state = initial_state.to_json
-    render text: nil, layout: 'react'
+    render html: nil, layout: 'react'
   end
 end
