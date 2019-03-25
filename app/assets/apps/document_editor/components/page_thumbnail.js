@@ -9,7 +9,7 @@ import { darkGrey, badgeGrey, selected, white, green } from 'document_editor/com
 
 
 const PageThumbnail = ({ page, onClick, isCurrent }) => {
-  let backgroundColor;
+  let backgroundColor, color;
   if (isCurrent) {
     backgroundColor = selected;
     color = white;
